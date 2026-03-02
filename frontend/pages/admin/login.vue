@@ -3,7 +3,7 @@
     <UCard class="w-full max-w-sm shadow-xl border-t-4 border-primary-500">
       <template #header>
         <div class="flex flex-col items-center gap-3">
-          <img src="/logo.png" alt="Hdland Logo" class="h-16 w-auto object-contain" />
+          <!-- <img src="/logo.png" alt="Hdland Logo" class="h-16 w-auto object-contain" /> -->
           <div class="text-center">
             <h1 class="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">
               Admin Portal
@@ -37,40 +37,57 @@
 </template>
 
 <script setup>
-const state = reactive({
-  username: '', // or email, depending on your Laravel setup
-  password: ''
-})
-
-const loading = ref(false)
-const toast = useToast()
-
-async function onSubmit() {
-  loading.value = true
-  
-  try {
-    // 1. Send request to your Laravel backend
-    const data = await $fetch('http://localhost:8000/api/login', {
-      method: 'POST',
-      body: state,
-      headers: {
-        'Accept': 'application/json'
-      }
+    const state = reactive({
+        username: '',
+        password: ''
     })
 
-    // 2. Handle successful login (e.g., save token)
-    console.log('Login Success:', data)
-    toast.add({ title: 'Success', description: 'Welcome to HDland Admin', color: 'success' })
-    
-    // 3. Redirect to dashboard
-    navigateTo('/admin/dashboard')
-    
-  } catch (error) {
-    // 4. Handle errors (401 Unauthorized, etc.)
-    const errorMessage = error.data?.message || 'Invalid credentials'
-    toast.add({ title: 'Login Failed', description: errorMessage, color: 'error' })
-  } finally {
-    loading.value = false
-  }
-}
+    const loading = ref(false)
+    const toast = useToast()
+
+    async function onSubmit() {
+    loading.value = true
+
+    try {
+        // 1️⃣ Get CSRF cookie
+        await $fetch('http://localhost:8000/sanctum/csrf-cookie', {
+        credentials: 'include'
+        })
+
+        // 2️⃣ Read XSRF-TOKEN cookie
+        const xsrfToken = useCookie('XSRF-TOKEN').value
+
+        // 3️⃣ Send login request WITH X-XSRF-TOKEN header
+        await $fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        body: {
+            username: state.username,
+            password: state.password
+        },
+        credentials: 'include',
+        headers: {
+            'X-XSRF-TOKEN': decodeURIComponent(xsrfToken || '')
+        }
+        })
+
+        toast.add({
+        title: 'Success',
+        description: 'Logged in!',
+        color: 'success'
+        })
+
+        navigateTo('/admin/dashboard')
+
+    } catch (error) {
+        console.error('Login Error:', error)
+
+        toast.add({
+        title: 'Error',
+        description: error?.data?.message || 'Login failed',
+        color: 'error'
+        })
+    } finally {
+        loading.value = false
+    }
+    }
 </script>

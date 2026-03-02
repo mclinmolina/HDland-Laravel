@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 class services extends Model
 {
     protected $fillable = [
@@ -20,5 +21,11 @@ class services extends Model
         static::creating(function ($service) {
             $service->slug = $service->slug ?? Str::slug($service->name ?? $service->survey_name);
         });
+    }
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute() {
+        return $this->survey_image ? url(Storage::url($this->survey_image)) : null;
     }
 }

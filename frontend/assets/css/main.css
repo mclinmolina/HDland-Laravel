@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  /* This maps the Nuxt UI 'primary' color to Tailwind's Red */
+  --color-primary-500: var(--color-red-500);
+  --color-primary-600: var(--color-red-600);
+  --color-primary-700: var(--color-red-700);
+
+  /* This maps the 'neutral' color to Slate for a professional look */
+  --color-neutral-500: var(--color-slate-500);
+  --color-neutral-900: var(--color-slate-900);
+}

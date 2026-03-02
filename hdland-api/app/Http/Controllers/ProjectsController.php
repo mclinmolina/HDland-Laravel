@@ -16,7 +16,6 @@ class ProjectsController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'name' => 'required|string',
-            'location' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 

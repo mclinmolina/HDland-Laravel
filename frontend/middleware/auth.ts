@@ -1,12 +1,21 @@
-export default defineNuxtRouteMiddleware(async (to, from) => {
+export default defineNuxtRouteMiddleware(async () => {
+  if (import.meta.server) return
+
+  const token = localStorage.getItem('token')
+
+  if (!token) {
+    return navigateTo('/admin/login')
+  }
+
   try {
-    // Check if user is logged in by hitting a protected Laravel route
     await $fetch('http://localhost:8000/api/user', {
-      credentials: 'include',
-      headers: { 'Accept': 'application/json' }
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json'
+      }
     })
   } catch (error) {
-    // If 401 Unauthorized, kick them back to login
+    localStorage.removeItem('token')
     return navigateTo('/admin/login')
   }
 })

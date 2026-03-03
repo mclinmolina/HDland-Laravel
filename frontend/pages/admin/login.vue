@@ -37,57 +37,47 @@
 </template>
 
 <script setup>
-    const state = reactive({
-        username: '',
-        password: ''
+const state = reactive({
+  username: '',
+  password: ''
+})
+
+const loading = ref(false)
+const toast = useToast()
+
+async function onSubmit() {
+  loading.value = true
+
+  try {
+    const response = await $fetch('http://localhost:8000/api/login', {
+      method: 'POST',
+      body: {
+        username: state.username,
+        password: state.password
+      }
     })
 
-    const loading = ref(false)
-    const toast = useToast()
+    // Save token
+    localStorage.setItem('token', response.token)
 
-    async function onSubmit() {
-    loading.value = true
+    toast.add({
+      title: 'Success',
+      description: 'Logged in!',
+      color: 'success'
+    })
 
-    try {
-        // 1️⃣ Get CSRF cookie
-        await $fetch('http://localhost:8000/sanctum/csrf-cookie', {
-        credentials: 'include'
-        })
+    navigateTo('/admin/dashboard')
 
-        // 2️⃣ Read XSRF-TOKEN cookie
-        const xsrfToken = useCookie('XSRF-TOKEN').value
+  } catch (error) {
+    console.error('Login Error:', error)
 
-        // 3️⃣ Send login request WITH X-XSRF-TOKEN header
-        await $fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        body: {
-            username: state.username,
-            password: state.password
-        },
-        credentials: 'include',
-        headers: {
-            'X-XSRF-TOKEN': decodeURIComponent(xsrfToken || '')
-        }
-        })
-
-        toast.add({
-        title: 'Success',
-        description: 'Logged in!',
-        color: 'success'
-        })
-
-        navigateTo('/admin/dashboard')
-
-    } catch (error) {
-        console.error('Login Error:', error)
-
-        toast.add({
-        title: 'Error',
-        description: error?.data?.message || 'Login failed',
-        color: 'error'
-        })
-    } finally {
-        loading.value = false
-    }
-    }
+    toast.add({
+      title: 'Error',
+      description: error?.data?.message || 'Login failed',
+      color: 'error'
+    })
+  } finally {
+    loading.value = false
+  }
+}
 </script>

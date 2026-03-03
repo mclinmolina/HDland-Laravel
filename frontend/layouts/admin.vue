@@ -57,7 +57,16 @@ const navItems = [
 ]
 
 async function onLogout() {
-  await $fetch('http://localhost:8000/api/logout', { method: 'POST', credentials: 'include' })
+  const token = localStorage.getItem('token')
+
+  await $fetch('http://localhost:8000/api/logout', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  localStorage.removeItem('token')
   navigateTo('/admin/login')
 }
 </script>

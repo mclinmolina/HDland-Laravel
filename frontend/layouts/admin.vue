@@ -1,72 +1,36 @@
 <template>
-  <UDashboardGroup>
-    <UDashboardSidebar resizable collapsible>
-      <template #header>
-        <div class="flex items-center gap-2 p-1.5">
-          <UIcon name="i-heroicons-cube-transparent" class="w-6 h-6 text-primary" />
-          <span class="font-bold text-neutral-900">HDland Admin</span>
-        </div>
-      </template>
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-950">
+    <!-- Top Navbar -->
+    <header class="flex items-center justify-between px-6 py-4 bg-white dark:bg-gray-900 shadow">
+      <!-- Logo Left -->
+      <div class="flex items-center gap-3">
+        <img src="/logo.png" class="h-8 w-auto" />
+        <span class="font-semibold text-lg">HD Land Admin</span>
+      </div>
 
-      <UNavigationMenu 
-        orientation="vertical" 
-        :items="navItems" 
-        class="px-2"
-      />
+      <!-- Logout Right -->
+      <button
+        @click="logout"
+        class="px-4 py-2 text-sm rounded-xl bg-red-500 text-white hover:bg-red-600 transition"
+      >
+        Logout
+      </button>
+    </header>
 
-      <template #footer>
-        <UButton 
-          label="Sign Out" 
-          variant="ghost" 
-          color="neutral" 
-          icon="i-heroicons-arrow-left-on-rectangle"
-          class="w-full justify-start"
-          @click="onLogout"
-        />
-      </template>
-    </UDashboardSidebar>
-
-    <UDashboardPanel grow>
-      <template #header>
-        <UDashboardNavbar title="Overview">
-          <template #right>
-            <UButton icon="i-heroicons-magnifying-glass" variant="ghost" color="neutral" />
-            <UButton icon="i-heroicons-bell" variant="ghost" color="neutral" />
-            <UAvatar src="https://avatars.githubusercontent.com/u/739984?v=4" size="sm" />
-          </template>
-        </UDashboardNavbar>
-      </template>
-
-      <UDashboardPanelContent>
-        <slot />
-      </UDashboardPanelContent>
-    </UDashboardPanel>
-  </UDashboardGroup>
+    <!-- Page Content -->
+    <main class="p-6">
+      <slot />
+    </main>
+  </div>
 </template>
 
 <script setup>
-const navItems = [
-  [
-    { label: 'Dashboard', icon: 'i-heroicons-home', to: '/admin/dashboard' },
-    { label: 'Users', icon: 'i-heroicons-user-group', to: '/admin/users' },
-    { label: 'Settings', icon: 'i-heroicons-cog-6-tooth', to: '/admin/settings' }
-  ],
-  [
-    { label: 'Documentation', icon: 'i-heroicons-book-open', to: 'https://ui.nuxt.com', target: '_blank' }
-  ]
-]
-
-async function onLogout() {
-  const token = localStorage.getItem('token')
-
+async function logout() {
   await $fetch('http://localhost:8000/api/logout', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
+    credentials: 'include'
   })
 
-  localStorage.removeItem('token')
-  navigateTo('/admin/login')
+  navigateTo('/login')
 }
 </script>

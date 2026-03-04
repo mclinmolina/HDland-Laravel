@@ -13,7 +13,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/services', [ServicesController::class, 'index']);
 Route::get('/projects', [ProjectsController::class, 'index']);
 
-// Protected
+// Protected - using sanctum guard explicitly
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/user', function (Request $request) {

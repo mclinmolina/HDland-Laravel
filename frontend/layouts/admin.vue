@@ -4,7 +4,7 @@
     <header class="flex items-center justify-between px-6 py-4 bg-white dark:bg-gray-900 shadow">
       <!-- Logo Left -->
       <div class="flex items-center gap-3">
-        <img src="/logo.png" class="h-8 w-auto" />
+        <!-- <img src="/logo.png" class="h-8 w-auto" /> -->
         <span class="font-semibold text-lg">HD Land Admin</span>
       </div>
 
@@ -16,7 +16,6 @@
         Logout
       </button>
     </header>
-
     <!-- Page Content -->
     <main class="p-6">
       <slot />
@@ -25,12 +24,18 @@
 </template>
 
 <script setup>
-async function logout() {
-  await $fetch('http://localhost:8000/api/logout', {
-    method: 'POST',
-    credentials: 'include'
-  })
+const api = useApi()
 
-  navigateTo('/login')
+async function logout() {
+  try {
+    await api('/logout', {
+      method: 'POST'
+    })
+  } catch (e) {
+    console.log('Logout error (safe to ignore if token expired)')
+  }
+
+  localStorage.removeItem('token')
+  navigateTo('/admin/login')
 }
 </script>

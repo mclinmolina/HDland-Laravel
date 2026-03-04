@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/services', [ServicesController::class, 'store']);
     Route::delete('/services/{service}', [ServicesController::class, 'destroy']);
     Route::post('/projects', [ProjectsController::class, 'store']);
+    Route::delete('/projects/{project}', [ProjectsController::class, 'delete']);
 });
 // Route::get('/user', function (Request $request) {
 //     return $request->user();

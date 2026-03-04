@@ -1,12 +1,8 @@
-<script setup>
-definePageMeta({
-  layout: 'admin'
-})
-</script>
-
 <template>
-  <div class="space-y-10">
-    <ServicesTable />
-    <ProjectsTable />
-  </div>
+  <NuxtLayout name="admin">
+    <div class="space-y-10">
+      <ServicesTable />
+      <ProjectsTable />
+    </div>
+  </NuxtLayout>
 </template>

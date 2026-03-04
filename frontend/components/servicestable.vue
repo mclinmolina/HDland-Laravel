@@ -42,7 +42,7 @@ function deleteService(id) {
           <td>{{ service.description }}</td>
           <td>
             <img
-              :src="service.image"
+              :src="service.survey_image"
               class="h-12 w-20 object-cover rounded-lg"
             />
           </td>

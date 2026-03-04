@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Storage;
 class ProjectsController extends Controller
 {
     public function index() {
-        return response()->json(Projects::all());
+        $projects = Projects::all()->map(function ($project) {
+            $project->image = $project->image ? asset('storage/' . $project->image) : null;
+            return $project;
+        });
+        return response()->json($projects);
     }
 
     public function store(Request $request) {
@@ -24,5 +28,11 @@ class ProjectsController extends Controller
 
         $project = Projects::create($validated);
         return response()->json($project, 201);
+    }
+
+    public function delete(Projects $project) {
+        Storage::disk('public')->delete($project->image);
+        $project->delete();
+        return response()->json(null, 204);
     }
 }

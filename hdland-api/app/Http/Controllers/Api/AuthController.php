@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -28,6 +29,8 @@ class AuthController extends Controller
 
         // Create a new token for this session
         $token = $user->createToken('admin-token')->plainTextToken;
+        
+        Log::info('Token created for user: ' . $user->username);
 
         return response()->json([
             'user' => [

@@ -1,13 +1,86 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme {
-  /* This maps the Nuxt UI 'primary' color to Tailwind's Red */
-  --color-primary-500: var(--color-red-500);
-  --color-primary-600: var(--color-red-600);
-  --color-primary-700: var(--color-red-700);
+@theme static {
+  /* Font Family */
+  --font-display: "Space Grotesk", sans-serif;
+  
+  /* Custom Colors - Define ALL shades from 50-950 for Nuxt UI */
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fee2e2;
+  --color-primary-200: #fecaca;
+  --color-primary-300: #fca5a5;
+  --color-primary-400: #f87171;
+  --color-primary-500: #ef4444;
+  --color-primary-600: #dc2626;
+  --color-primary-700: #b91c1c;
+  --color-primary-800: #991b1b;
+  --color-primary-900: #7f1d1d;
+  --color-primary-950: #450a0a;
+  
+  /* Background colors as custom colors */
+  --color-background-light-50: #fafafa;
+  --color-background-light-100: #f8f6f6;
+  --color-background-light-200: #f0eeee;
+  --color-background-light-300: #e6e2e2;
+  --color-background-light-400: #d1cccc;
+  --color-background-light-500: #b8b0b0;
+  --color-background-light-600: #9a8f8f;
+  --color-background-light-700: #7d7272;
+  --color-background-light-800: #5f5757;
+  --color-background-light-900: #423d3d;
+  --color-background-light-950: #221010;
 
-  /* This maps the 'neutral' color to Slate for a professional look */
-  --color-neutral-500: var(--color-slate-500);
-  --color-neutral-900: var(--color-slate-900);
+  --color-background-dark-50: #fbf5f5;
+  --color-background-dark-100: #f5e6e6;
+  --color-background-dark-200: #ebd0d0;
+  --color-background-dark-300: #dfb0b0;
+  --color-background-dark-400: #d18a8a;
+  --color-background-dark-500: #c45e5e;
+  --color-background-dark-600: #b54545;
+  --color-background-dark-700: #963838;
+  --color-background-dark-800: #7d3232;
+  --color-background-dark-900: #662e2e;
+  --color-background-dark-950: #221010;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+/* Dark mode configuration */
+.dark {
+  --ui-bg: var(--color-background-dark-100);
+  --ui-text: var(--color-background-dark-950);
+}
+
+/* Light mode (default) */
+:root {
+  --ui-bg: var(--color-background-light-100);
+  --ui-text: var(--color-background-light-950);
+}
+
+/* Apply base styles */
+body {
+  @apply antialiased text-default bg-default scheme-light dark:scheme-dark;
+}
+
+/* Utility classes for your custom colors */
+.bg-background-light {
+  background-color: var(--color-background-light-100);
+}
+
+.bg-background-dark {
+  background-color: var(--color-background-dark-950);
+}
+
+.text-background-light {
+  color: var(--color-background-light-100);
+}
+
+.text-background-dark {
+  color: var(--color-background-dark-950);
 }

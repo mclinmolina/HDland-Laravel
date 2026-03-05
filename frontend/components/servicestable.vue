@@ -77,8 +77,21 @@ function editService(service) {
   console.log('Edit', service)
 }
 
-function deleteService(id) {
-  console.log('Delete', id)
+async function deleteService(id) {
+  try {
+    const token = localStorage.getItem('token')
+    await $fetch(`http://localhost:8000/api/services/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json'
+      },
+      credentials: 'include'
+    })
+    fetchServices()
+  } catch (error) {
+    console.error('Error deleting service:', error)
+  }
 }
 
 function handleImageChange(event) {

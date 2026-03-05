@@ -25,19 +25,49 @@
       <slot />
     </main>
 
-    <footer class="bg-zinc-950 text-white py-16 border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12">
-        <div>
-          <h4 class="font-bold text-lg mb-6 text-primary uppercase">Quick Links</h4>
-          <ul class="space-y-3 text-gray-400 text-sm">
-            <li><NuxtLink to="/" class="hover:text-primary">Home</NuxtLink></li>
-            <li><NuxtLink to="/about" class="hover:text-primary">About Us</NuxtLink></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg mb-6 text-primary uppercase">Contact Info</h4>
-          <p class="text-gray-400 text-sm">123 Surveyors Way, Engineering District</p>
-          <p class="text-gray-400 text-sm">+1 (555) 123-4567</p>
+    <footer class="bg-zinc-950 text-white py-8 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row gap-8 md:items-start">
+          <!-- HDLAND Branding -->
+          <div class="md:w-1/3">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="bg-primary p-1 rounded">
+                <span class="material-symbols-outlined text-white text-xl">architecture</span>
+              </div>
+              <h3 class="font-bold text-lg uppercase">HD Land</h3>
+            </div>
+            <p class="text-gray-400 text-sm">Professional land surveying and realty services.</p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-bold text-sm mb-4 text-primary uppercase">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li><NuxtLink to="/" class="hover:text-primary">Home</NuxtLink></li>
+              <li><NuxtLink to="/about" class="hover:text-primary">About Us</NuxtLink></li>
+              <li><NuxtLink to="/services" class="hover:text-primary">Services</NuxtLink></li>
+              <li><NuxtLink to="/contact" class="hover:text-primary">Contact</NuxtLink></li>
+            </ul>
+          </div>
+
+          <!-- Socials -->
+          <div>
+            <h4 class="font-bold text-sm mb-4 text-primary uppercase">Socials</h4>
+            <div class="flex gap-4">
+              <a href="#" class="text-gray-400 hover:text-primary" aria-label="Facebook">
+                <span class="material-symbols-outlined text-2xl">facebook</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary" aria-label="Twitter">
+                <span class="material-symbols-outlined text-2xl">twitter_x</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary" aria-label="Instagram">
+                <span class="material-symbols-outlined text-2xl">photo_camera</span>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary" aria-label="LinkedIn">
+                <span class="material-symbols-outlined text-2xl">business</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

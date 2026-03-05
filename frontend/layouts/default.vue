@@ -1,5 +1,5 @@
 <template>
-  <div class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white">
+  <div class="font-display bg-background-light dark:bg-background-dark text-black dark:text-white">
     <header class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
@@ -7,15 +7,15 @@
             <div class="bg-primary p-1.5 rounded-lg">
               <span class="material-symbols-outlined text-white text-2xl">architecture</span>
             </div>
-            <h1 class="text-xl font-bold tracking-tight uppercase">
+            <h1 class="text-xl font-bold tracking-tight uppercase text-black">
               HD Land Surveying <span class="text-primary">&</span> Realty
             </h1>
           </div>
           <nav class="hidden md:flex items-center gap-8">
-            <NuxtLink to="/" class="text-sm font-semibold hover:text-primary transition-colors">Home</NuxtLink>
-            <NuxtLink to="/about" class="text-sm font-semibold hover:text-primary transition-colors">About</NuxtLink>
-            <NuxtLink to="/services" class="text-sm font-semibold hover:text-primary transition-colors">Services</NuxtLink>
-            <NuxtLink to="/contact" class="text-sm font-semibold hover:text-primary transition-colors">Contact Us</NuxtLink>
+            <NuxtLink to="/" class="text-sm font-semibold text-black hover:text-primary transition-colors">Home</NuxtLink>
+            <NuxtLink to="/about" class="text-sm font-semibold text-black hover:text-primary transition-colors">About</NuxtLink>
+            <NuxtLink to="/services" class="text-sm font-semibold text-black hover:text-primary transition-colors">Services</NuxtLink>
+            <NuxtLink to="/contact" class="text-sm font-semibold text-black hover:text-primary transition-colors">Contact Us</NuxtLink>
           </nav>
         </div>
       </div>

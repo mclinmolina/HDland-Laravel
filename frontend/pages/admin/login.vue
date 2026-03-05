@@ -37,6 +37,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: false
+})
+
 const state = reactive({
   username: '',
   password: ''

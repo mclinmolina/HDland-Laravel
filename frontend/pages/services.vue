@@ -15,12 +15,14 @@ const services = [
   {
     title: "Subdivision Survey",
     desc: "Dividing a single parcel of land into two or more smaller lots.",
-    icon: "splitscreen"
+    icon: "splitscreen",
+    img: "/icons/subdivision.png"
   },
   {
     title: "Verification Survey",
     desc: "Verifying the correct position of existing monuments and boundaries.",
-    icon: "verified"
+    icon: "verified",
+    img: "/icons/verified.png"
   },
   {
     title: "Topographic Survey",
@@ -31,7 +33,8 @@ const services = [
   {
     title: "As-Built Surveying",
     desc: "Documenting the final location of structures during or after construction.",
-    icon: "domain"
+    icon: "domain",
+    img: "/icons/asBuilt.png"
   },
   {
     title: "Segregation Survey",
@@ -48,7 +51,8 @@ const services = [
   {
     title: "Consolidation Survey",
     desc: "Combining two or more adjacent lots into a single unified property title.",
-    icon: "layers"
+    icon: "layers",
+    img: "/icons/consolidation.png"
   },
   {
     title: "Title Transfer/Titling",
@@ -62,7 +66,7 @@ const services = [
 <template>
   <div class="bg-white font-sans">
     <!-- HERO SECTION -->
-    <section class="relative w-full h-[400px] flex items-center justify-center overflow-hidden">
+    <section class="relative w-full h-100 flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-black/50 z-10"></div>
         <img 

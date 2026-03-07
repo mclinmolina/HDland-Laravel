@@ -19,16 +19,18 @@
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <!-- Enhanced Primary Buttons with Highlight Effect -->
-          <button 
+          <NuxtLink 
+            to="/services"
             class="btn-highlight bg-primary-600 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-primary-500/30 ring-2 ring-primary-500/20 hover:bg-primary-700 hover:ring-primary-400 hover:shadow-primary-500/50"
           >
             View Services
-          </button>
-          <button 
+          </NuxtLink>
+          <NuxtLink 
+            to="/about" 
             class="btn-highlight bg-primary-600 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-primary-500/30 ring-2 ring-primary-500/20 hover:bg-primary-700 hover:ring-primary-400 hover:shadow-primary-500/50"
           >
             Our Portfolio
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -70,48 +72,6 @@
             <p class="text-gray-600 leading-relaxed">
               Consistent, timely delivery and full legal compliance for all technical documentation and property transactions.
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Specialized Solutions / Services Section -->
-    <section class="py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-end mb-12">
-          <div>
-            <span class="text-primary-600 font-bold tracking-widest uppercase text-sm">Capabilities</span>
-            <h2 class="text-4xl font-bold mt-2 text-black">Specialized Solutions</h2>
-          </div>
-          <div class="flex gap-3">
-            <button class="p-3 rounded-full border border-gray-300 text-black hover:bg-primary-600 hover:text-white hover:border-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all">
-              <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button class="p-3 rounded-full border border-gray-300 text-black hover:bg-primary-600 hover:text-white hover:border-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-110 transition-all">
-              <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-          </div>
-        </div>
-        <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x">
-          <div 
-            v-for="service in services" 
-            :key="service.id" 
-            class="min-w-[320px] md:min-w-100 snap-start group cursor-pointer"
-          >
-            <!-- Image container with shadow -->
-            <div class="relative overflow-hidden rounded-xl h-64 mb-4 shadow-[0_8px_30px_-6px_rgba(0,0,0,0.2)] group-hover:shadow-[0_12px_40px_-6px_rgba(0,0,0,0.3)] transition-shadow">
-              <img 
-                :alt="service.name" 
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                :src="service.survey_image || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"
-              />
-              <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
-              <div class="absolute bottom-4 left-4 size-10 bg-primary-600 rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/50 transition-all">
-                <span class="material-symbols-outlined text-white">map</span>
-              </div>
-            </div>
-            <h3 class="text-2xl font-bold mb-2 text-black group-hover:text-primary transition-colors">{{ service.name }}</h3>
-            <p class="text-gray-600">{{ service.description }}</p>
           </div>
         </div>
       </div>

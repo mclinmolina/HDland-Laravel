@@ -25,51 +25,93 @@
       <slot />
     </main>
 
-    <footer class="bg-zinc-950 text-white py-8 border-t border-white/5">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row gap-8 md:items-start">
-          <!-- HDLAND Branding -->
-          <div class="md:w-1/3">
-            <div class="flex items-center gap-2 mb-4">
-              <div class="bg-primary p-1 rounded">
-                <span class="material-symbols-outlined text-white text-xl">architecture</span>
-              </div>
-              <h3 class="font-bold text-lg uppercase">HD Land</h3>
-            </div>
-            <p class="text-gray-400 text-sm">Professional land surveying and realty services.</p>
-          </div>
+    <footer class="bg-black text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 py-16">
 
-          <!-- Quick Links -->
-          <div>
-            <h4 class="font-bold text-sm mb-4 text-primary uppercase">Quick Links</h4>
-            <ul class="space-y-2 text-gray-400 text-sm">
-              <li><NuxtLink to="/" class="hover:text-primary">Home</NuxtLink></li>
-              <li><NuxtLink to="/about" class="hover:text-primary">About Us</NuxtLink></li>
-              <li><NuxtLink to="/services" class="hover:text-primary">Services</NuxtLink></li>
-              <li><NuxtLink to="/contact" class="hover:text-primary">Contact</NuxtLink></li>
-            </ul>
-          </div>
+    <!-- Top Footer -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
 
-          <!-- Socials -->
-          <div>
-            <h4 class="font-bold text-sm mb-4 text-primary uppercase">Socials</h4>
-            <div class="flex gap-4">
-              <a href="#" class="text-gray-400 hover:text-primary" aria-label="Facebook">
-                <span class="material-symbols-outlined text-2xl">facebook</span>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-primary" aria-label="Twitter">
-                <span class="material-symbols-outlined text-2xl">twitter_x</span>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-primary" aria-label="Instagram">
-                <span class="material-symbols-outlined text-2xl">photo_camera</span>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-primary" aria-label="LinkedIn">
-                <span class="material-symbols-outlined text-2xl">business</span>
-              </a>
-            </div>
-          </div>
-        </div>
+      <!-- Logo -->
+      <div>
+        <h2 class="text-white text-2xl font-bold tracking-widest">LOGO</h2>
+        <p class="text-sm text-gray-400 mt-2 tracking-wide">SLOGAN COMPANY</p>
       </div>
-    </footer>
+
+      <!-- Column 1 -->
+      <div>
+        <ul class="space-y-2 text-sm uppercase tracking-wider">
+          <li><a href="#" class="hover:text-white">Weekly Themes</a></li>
+          <li><a href="#" class="hover:text-white">Pre-sale FAQs</a></li>
+          <li><a href="#" class="hover:text-white">Submit a Ticket</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <ul class="space-y-2 text-sm uppercase tracking-wider">
+          <li><a href="#" class="hover:text-white">Services</a></li>
+          <li><a href="#" class="hover:text-white">Theme Tweak</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <ul class="space-y-2 text-sm uppercase tracking-wider">
+          <li><a href="#" class="hover:text-white">Showcase</a></li>
+          <li><a href="#" class="hover:text-white">Widgetkit</a></li>
+          <li><a href="#" class="hover:text-white">Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4 -->
+      <div>
+        <ul class="space-y-2 text-sm uppercase tracking-wider">
+          <li><a href="#" class="hover:text-white">About Us</a></li>
+          <li><a href="#" class="hover:text-white">Contact Us</a></li>
+          <li><a href="#" class="hover:text-white">Affiliates</a></li>
+          <li><a href="#" class="hover:text-white">Resources</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-700 my-12"></div>
+
+    <!-- Social + Copyright -->
+    <div class="flex flex-col items-center space-y-6">
+
+      <!-- Social Icons -->
+      <div class="flex space-x-4">
+
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <span class="material-symbols-outlined text-[18px]">facebook</span>
+        </a>
+
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <span class="material-symbols-outlined text-[18px]">public</span>
+        </a>
+
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <span class="material-symbols-outlined text-[18px]">rss_feed</span>
+        </a>
+
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <span class="material-symbols-outlined text-[18px]">mail</span>
+        </a>
+
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <span class="material-symbols-outlined text-[18px]">more_horiz</span>
+        </a>
+
+      </div>
+
+      <!-- Copyright -->
+      <p class="text-sm text-gray-500">
+        ©Copyright. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
   </div>
 </template>

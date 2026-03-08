@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  layout: 'default'
+})
+
 const services = [
   {
     title: "Relocation Survey",
@@ -62,7 +66,7 @@ const services = [
 <template>
   <div class="bg-white font-sans">
     <!-- HERO SECTION -->
-    <section class="relative w-full h-[400px] flex items-center justify-center overflow-hidden">
+    <section class="relative w-full h-100 flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-black/50 z-10"></div>
         <img 

@@ -1,11 +1,11 @@
 <template>
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-950">
+  <div class="min-h-screen bg-gray-900 text-white">
     <!-- Top Navbar -->
-    <header class="flex items-center justify-between px-6 py-4 bg-white dark:bg-gray-900 shadow">
+    <header class="flex items-center justify-between px-6 py-4 bg-gray-800 shadow">
       <!-- Logo Left -->
       <div class="flex items-center gap-3">
         <!-- <img src="/logo.png" class="h-8 w-auto" /> -->
-        <span class="font-semibold text-lg">HD Land Admin</span>
+        <span class="font-semibold text-lg text-white">HD Land Admin</span>
       </div>
 
       <!-- Logout Right -->
@@ -17,7 +17,7 @@
       </button>
     </header>
     <!-- Page Content -->
-    <main class="p-6">
+    <main class="p-6 text-white">
       <slot />
     </main>
   </div>

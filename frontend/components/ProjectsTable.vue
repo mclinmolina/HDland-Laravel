@@ -92,9 +92,9 @@ async function deleteProject(id) {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-900 rounded-2xl shadow p-6">
+  <div class="bg-gray-800 rounded-2xl shadow p-6">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-semibold">Projects</h2>
+      <h2 class="text-xl font-semibold text-white">Projects</h2>
       <button
         @click="openAddModal"
         class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
@@ -105,10 +105,10 @@ async function deleteProject(id) {
 
     <table class="w-full text-left">
       <thead>
-        <tr class="border-b">
-          <th class="py-2">Name</th>
-          <th>Image</th>
-          <th class="text-center">Actions</th>
+        <tr class="border-b border-gray-700">
+          <th class="py-2 text-white">Name</th>
+          <th class="text-white">Image</th>
+          <th class="text-center text-white">Actions</th>
         </tr>
       </thead>
 
@@ -116,9 +116,9 @@ async function deleteProject(id) {
         <tr
           v-for="project in projects"
           :key="project.id"
-          class="border-b hover:bg-gray-50 dark:hover:bg-gray-800"
+          class="border-b border-gray-700 hover:bg-gray-700"
         >
-          <td class="py-3 font-medium">{{ project.name }}</td>
+          <td class="py-3 font-medium text-white">{{ project.name }}</td>
           <td class="py-3">
             <img
               :src="project.image"
@@ -139,29 +139,29 @@ async function deleteProject(id) {
 
     <!-- Add Project Modal -->
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 w-full max-w-md">
-        <h3 class="text-lg font-semibold mb-4">Add New Project</h3>
+      <div class="bg-gray-800 rounded-2xl p-6 w-full max-w-md border border-gray-700">
+        <h3 class="text-lg font-semibold mb-4 text-white">Add New Project</h3>
         
         <form @submit.prevent="addProject" class="space-y-4">
           <div>
-            <label class="block text-sm font-medium mb-1">Name *</label>
+            <label class="block text-sm font-medium mb-1 text-white">Name *</label>
             <input
               v-model="newProject.name"
               type="text"
               required
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
               placeholder="Project name"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-1">Image *</label>
+            <label class="block text-sm font-medium mb-1 text-white">Image *</label>
             <input
               type="file"
               @change="handleImageChange"
               accept="image/*"
               required
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
             />
           </div>
 

@@ -103,9 +103,9 @@ function handleImageChange(event) {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-900 rounded-2xl shadow p-6">
+  <div class="bg-gray-800 rounded-2xl shadow p-6">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-semibold">Services</h2>
+      <h2 class="text-xl font-semibold text-white">Services</h2>
       <button
         @click="openAddModal"
         class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
@@ -116,11 +116,11 @@ function handleImageChange(event) {
 
     <table class="w-full text-left">
       <thead>
-        <tr class="border-b">
-          <th class="py-2">Survey Name</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th class="text-center">Actions</th>
+        <tr class="border-b border-gray-700">
+          <th class="py-2 text-white">Survey Name</th>
+          <th class="text-white">Description</th>
+          <th class="text-white">Image</th>
+          <th class="text-center text-white">Actions</th>
         </tr>
       </thead>
 
@@ -128,10 +128,10 @@ function handleImageChange(event) {
         <tr
           v-for="service in services"
           :key="service.id"
-          class="border-b hover:bg-gray-50 dark:hover:bg-gray-800"
+          class="border-b border-gray-700 hover:bg-gray-700"
         >
-          <td class="py-3 font-medium">{{ service.name }}</td>
-          <td>{{ service.description }}</td>
+          <td class="py-3 font-medium text-white">{{ service.name }}</td>
+          <td class="text-white">{{ service.description }}</td>
           <td>
             <img
               :src="service.survey_image"
@@ -158,58 +158,58 @@ function handleImageChange(event) {
 
     <!-- Add Service Modal -->
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 w-full max-w-md">
-        <h3 class="text-lg font-semibold mb-4">Add New Service</h3>
+      <div class="bg-gray-800 rounded-2xl p-6 w-full max-w-md border border-gray-700">
+        <h3 class="text-lg font-semibold mb-4 text-white">Add New Service</h3>
         
         <form @submit.prevent="addService" class="space-y-4">
           <div>
-            <label class="block text-sm font-medium mb-1">Type *</label>
+            <label class="block text-sm font-medium mb-1 text-white">Type *</label>
             <input
               v-model="newService.type"
               type="text"
               required
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
               placeholder="e.g., consultation"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-1">Name</label>
+            <label class="block text-sm font-medium mb-1 text-white">Name</label>
             <input
               v-model="newService.name"
               type="text"
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
               placeholder="Service name"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-1">Survey Name</label>
+            <label class="block text-sm font-medium mb-1 text-white">Survey Name</label>
             <input
               v-model="newService.survey_name"
               type="text"
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
               placeholder="Survey name"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-1">Description</label>
+            <label class="block text-sm font-medium mb-1 text-white">Description</label>
             <textarea
               v-model="newService.description"
               rows="3"
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
               placeholder="Service description"
             ></textarea>
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-1">Image</label>
+            <label class="block text-sm font-medium mb-1 text-white">Image</label>
             <input
               type="file"
               @change="handleImageChange"
               accept="image/*"
-              class="w-full px-3 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700"
+              class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
             />
           </div>
 

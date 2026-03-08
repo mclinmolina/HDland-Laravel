@@ -20,5 +20,14 @@ export default defineNuxtConfig({
     theme: {
       colors: ['primary', 'neutral'] // Register your custom colors here
     }
+  },
+  routeRules: {
+    // Public routes - SSR enabled for SEO
+    '/': { ssr: true },
+    '/about': { ssr: true },
+    '/services': { ssr: true },
+    '/contact': { ssr: true },
+    // Admin routes - SSR enabled
+    '/admin/**': { ssr: true }
   }
 })

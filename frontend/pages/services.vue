@@ -19,12 +19,14 @@ const services = [
   {
     title: "Subdivision Survey",
     desc: "Dividing a single parcel of land into two or more smaller lots.",
-    icon: "splitscreen"
+    icon: "splitscreen",
+    img: "/icons/subdivision.png"
   },
   {
     title: "Verification Survey",
     desc: "Verifying the correct position of existing monuments and boundaries.",
-    icon: "verified"
+    icon: "verified",
+    img: "/icons/verified.png"
   },
   {
     title: "Topographic Survey",
@@ -35,7 +37,8 @@ const services = [
   {
     title: "As-Built Surveying",
     desc: "Documenting the final location of structures during or after construction.",
-    icon: "domain"
+    icon: "domain",
+    img: "/icons/asBuilt.png"
   },
   {
     title: "Segregation Survey",
@@ -52,7 +55,8 @@ const services = [
   {
     title: "Consolidation Survey",
     desc: "Combining two or more adjacent lots into a single unified property title.",
-    icon: "layers"
+    icon: "layers",
+    img: "/icons/consolidation.png"
   },
   {
     title: "Title Transfer/Titling",

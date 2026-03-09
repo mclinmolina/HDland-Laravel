@@ -3,39 +3,7 @@ definePageMeta({
   layout: 'default'
 })
 
-const form = ref({
-  name: '',
-  email: '',
-  subject: '',
-  message: ''
-})
 
-const isSubmitting = ref(false)
-const submitStatus = ref(null) // 'success' | 'error' | null
-
-async function handleSubmit() {
-  isSubmitting.value = true
-  submitStatus.value = null
-  
-  try {
-    // Simulate API call - replace with actual endpoint
-    await new Promise(resolve => setTimeout(resolve, 1505))
-    
-    // Here you would normally send to your backend
-    // await $fetch('http://localhost:8000/api/contact', {
-    //   method: 'POST',
-    //   body: form.value
-    // })
-    
-    submitStatus.value = 'success'
-    form.value = { name: '', email: '', subject: '', message: '' }
-  } catch (error) {
-    console.error('Error submitting form:', error)
-    submitStatus.value = 'error'
-  } finally {
-    isSubmitting.value = false
-  }
-}
 </script>
 
 <template>
@@ -123,15 +91,13 @@ async function handleSubmit() {
           </div>
           
           <div class="p-8">
-            <form @submit.prevent="handleSubmit" class="space-y-6">
+            <form action="https://formsubmit.co/pitsdragon211@gmail.com" method="POST" class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Full Name -->
                 <div>
-                  <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2" for="full-name">Full Name</label>
+                  <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2">Full Name</label>
                   <input 
-                    v-model="form.name"
                     class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 focus:border-primary focus:bg-white focus:ring-0 transition-colors placeholder-gray-400 rounded-lg"
-                    id="full-name" 
                     name="full-name" 
                     placeholder="John Doe" 
                     type="text"
@@ -142,9 +108,7 @@ async function handleSubmit() {
                 <div>
                   <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2" for="email">Email Address</label>
                   <input 
-                    v-model="form.email"
                     class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 focus:border-primary focus:bg-white focus:ring-0 transition-colors placeholder-gray-400 rounded-lg"
-                    id="email" 
                     name="email" 
                     placeholder="john@example.com" 
                     type="email"
@@ -154,11 +118,9 @@ async function handleSubmit() {
               </div>
               <!-- Subject -->
               <div>
-                <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2" for="subject">Subject</label>
+                <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2">Subject</label>
                 <input 
-                  v-model="form.subject"
                   class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 focus:border-primary focus:bg-white focus:ring-0 transition-colors placeholder-gray-400 rounded-lg"
-                  id="subject" 
                   name="subject" 
                   placeholder="Project Inquiry" 
                   type="text"
@@ -167,11 +129,9 @@ async function handleSubmit() {
               </div>
               <!-- Message -->
               <div>
-                <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2" for="message">Message</label>
+                <label class="block text-sm font-bold text-black uppercase tracking-wider mb-2">Message</label>
                 <textarea 
-                  v-model="form.message"
                   class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 focus:border-primary focus:bg-white focus:ring-0 transition-colors placeholder-gray-400 rounded-lg text-black"
-                  id="message" 
                   name="message" 
                   placeholder="How can we help you?" 
                   rows="5"
@@ -185,8 +145,8 @@ async function handleSubmit() {
                 class="w-full bg-primary text-white py-4 px-8 font-bold uppercase tracking-widest hover:bg-primary/90 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed rounded-lg flex items-center justify-center gap-2"
                 type="submit"
               >
-                <span v-if="isSubmitting" class="material-symbols-outlined animate-spin">sync</span>
-                <span>{{ isSubmitting ? 'Sending...' : 'Send Message' }}</span>
+                <span>Send Message</span>
+                <span v-if="isSubmitting" class="material-symbols-outlined animate-spin">autorenew</span>
               </button>
 
               <!-- Success Message -->
@@ -194,14 +154,6 @@ async function handleSubmit() {
                 <div class="flex items-center gap-2">
                   <span class="material-symbols-outlined">check_circle</span>
                   <span>Your message has been sent successfully! We'll get back to you soon.</span>
-                </div>
-              </div>
-
-              <!-- Error Message -->
-              <div v-if="submitStatus === 'error'" class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                <div class="flex items-center gap-2">
-                  <span class="material-symbols-outlined">error</span>
-                  <span>Something went wrong. Please try again later.</span>
                 </div>
               </div>
             </form>

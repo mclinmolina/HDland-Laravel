@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   css: ['~/assets/css/main.css'],
   app: {
-    baseURL: '/HDland-laravel/', // Set the base URL for GitHub Pages
     head: {
       link: [
         { 
@@ -24,15 +23,11 @@ export default defineNuxtConfig({
   },
   routeRules: {
     // Public routes - SSR enabled for SEO
-    '/': { ssr: false },
+    '/': { ssr: true },
     '/about': { ssr: true },
     '/services': { ssr: true },
     '/contact': { ssr: true },
     // Admin routes - SSR enabled
-    '/admin/**': { ssr: false }
-  },
-  nitro: {
-    preset: 'github-pages'
+    '/admin/**': { ssr: true }
   }
-  
 })

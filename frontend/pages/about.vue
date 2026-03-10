@@ -1,0 +1,138 @@
+<script setup>
+definePageMeta({
+  layout: 'default'
+})
+
+</script>
+
+<template>
+  <main class="flex flex-col items-center font-[Space_Grotesk] bg-white text-black">
+    <!-- HERO -->
+    <section class="w-full max-w-360 px-4 md:px-40 py-5">
+      <div class="min-h-80 flex flex-col items-center justify-center text-center p-8 rounded-xl overflow-hidden relative bg-cover bg-center"
+        style="background-image: linear-gradient(rgba(236,19,19,0.7),rgba(0,0,0,0.6)),
+url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBfKjegF8csfz5teQseUs-0DNxDxRh-cRzQeaw1wWJW9HEKTM9IAD-KwKEfk3tDvipHPd0Zhow-U0SCTZ6GhbpmsLq_AMT4e7_RAZKQxslJmGvJO7eBoMnMDboR1THa23OLhM2fdQzsUMWUh7OLrDEMqa620pCAoBhAAhILxB2nAiWACYbHkfiCQZWTrOmixZ139MwFI6B6oSkKbvWj0PGoLbu9o9iagUY3a_1wjibmNmZZwA_HYcgntWm');">
+        <h1 class="text-white text-4xl md:text-6xl font-black uppercase tracking-tight">
+          About Our Firm
+        </h1>
+        <div class="h-1 w-20 bg-primary-600 mt-3"></div>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section class="w-full max-w-360 px-4 md:px-40 py-16">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <img
+          class="rounded-xl shadow-2xl object-cover w-full md:h-125"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzoggOGcCl0wTdn3EfJ46KN_lfU8EwiNgtex3x6mHCDe4ALNvKJUYCvM7BMJx3NBNOqHa0aLBCHcf8rBafClX6Vgjs0Hw-P0cq2ubnJeMVlVkvIEew8iJ7LQDffrtBiG835DoRtU_4MB0WY0v5ZMde_2LUUHAP8TVwzWy1RhLLoCWpNs1Gv9t4S1UDwxq_yn9UXVXCC0eMMu7Q8PcBHJdl2Cy-hFVBLPK_ZmVSRpiWJ2IPZYeuosENswnJLYmwRyFEecxRPA3cZ4-f"
+        />
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-2">
+            <div class="w-10 h-0.5 bg-red-600"></div>
+            <span class="text-red-600 font-bold uppercase tracking-widest text-sm">
+              Established 1998
+            </span>
+          </div>
+          <h2 class="text-4xl font-bold">
+            WHO ARE WE?
+          </h2>
+          <div class="space-y-4 text-black/80 leading-relaxed">
+            <p>
+              At HD Land Surveying and Realty, we bridge the gap between technical precision and real estate excellence. Founded on the principles of accuracy and integrity, our firm has grown from a local surveying practice into a comprehensive multi-disciplinary service provider.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+          </div>
+          <div class="flex gap-6 pt-4">
+            <div>
+              <span class="text-3xl font-bold text-red-600">25+</span>
+              <p class="text-xs font-bold uppercase">Years of Experience</p>
+            </div>
+            <div class="w-px h-12 bg-gray-300"></div>
+            <div>
+              <span class="text-3xl font-bold text-red-600">1.2k</span>
+              <p class="text-xs font-bold uppercase">Completed Projects</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION / VISION -->
+    <section class="w-full bg-white py-16">
+      <div class="max-w-360 mx-auto px-4 md:px-40">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold">Our Purpose</h2>
+          <div class="w-16 h-1 bg-red-600 mx-auto mt-2"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Mission -->
+          <div class="border-l-8 border-red-600 bg-gray-50 p-10 rounded-xl shadow-sm space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-red-600 text-4xl">target</span>
+              <h3 class="text-2xl font-bold">Our Mission</h3>
+            </div>
+            <p class="italic text-black/80 text-lg">
+              "To provide precise, reliable, and ethical surveying services that support land development, infrastructure planning, and sustainable resource management. We are committed to delivering accurate data using modern technology and professional expertise."
+            </p>
+          </div>
+
+          <!-- Vision -->
+          <div class="border-l-8 border-red-600 bg-gray-50 p-10 rounded-xl shadow-sm space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-red-600 text-4xl">visibility</span>
+              <h3 class="text-2xl font-bold">Our Vision</h3>
+            </div>
+            <p class="italic text-black/80 text-lg">
+              "To be recognized as trusted and competent surveyors who contribute to community development and responsible land stewardship through excellence and innovation."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE VALUES -->
+    <section class="w-full max-w-360 px-4 md:px-40 py-20">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold">Our Core Values</h2>
+        <p class="text-black/60 text-sm">
+          The pillars of our professional conduct
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center space-y-4">
+          <div class="w-20 h-20 rounded-full shadow-lg flex items-center justify-center mx-auto border hover:border-red-600 transition">
+            <span class="material-symbols-outlined text-red-600 text-4xl">architecture</span>
+          </div>
+          <h4 class="text-xl font-bold">Accuracy</h4>
+          <p class="text-sm text-black/70">
+            We ensure precision and reliability in every measurement and report.
+          </p>
+        </div>
+        <div class="text-center space-y-4">
+          <div class="w-20 h-20 rounded-full shadow-lg flex items-center justify-center mx-auto border hover:border-red-600 transition">
+            <span class="material-symbols-outlined text-red-600 text-4xl">verified_user</span>
+          </div>
+          <h4 class="text-xl font-bold">Integrity</h4>
+          <p class="text-sm text-black/70">
+            We uphold honesty and ethical standards in all surveying practices.
+          </p>
+        </div>
+        <div class="text-center space-y-4">
+          <div class="w-20 h-20 rounded-full shadow-lg flex items-center justify-center mx-auto border hover:border-red-600 transition">
+            <span class="material-symbols-outlined text-red-600 text-4xl">lightbulb</span>
+          </div>
+          <h4 class="text-xl font-bold">Innovation</h4>
+          <p class="text-sm text-black/70">
+            The world of surveying and realty is evolving. We embrace new methodologies to deliver faster, smarter, and more efficient results.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
+

@@ -12,7 +12,11 @@ class ServicesController extends Controller
 {
     // Public: List all services
     public function index() {
-        return response()->json(Services::all());
+        $services = Services::all()->map(function ($service) {
+            $service->survey_image = $service->survey_image ? asset('storage/' . $service->survey_image) : null;
+            return $service;
+        });
+        return response()->json($services);
     }
 
     // Protected: Store a new service

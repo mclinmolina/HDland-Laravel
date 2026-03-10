@@ -1,17 +1,11 @@
+// app.config.ts
 export default defineAppConfig({
   ui: {
-    // In v4, colors are set under 'colors'
     colors: {
-      primary: 'red',
-      neutral: 'slate'
-    },
-    // Component defaults now live directly under the component key
-    button: {
-      defaultVariants: {
-        size: 'md',
-        color: 'primary',
-        variant: 'solid'
-      }
+      primary: 'primary',      // Maps to your custom primary color
+      neutral: 'background-light',  // Or use 'zinc', 'slate', etc.
+      // You can add more semantic colors
+      secondary: 'background-dark'
     }
   }
 })

@@ -1,14 +1,12 @@
-export const useApi = (url, options = {}) => {
-  const config = useRuntimeConfig()
-  const token = useCookie('auth_token') // Store token in a cookie
+export const useApi = () => {
+  const token = process.client ? localStorage.getItem('token') : null
 
-  return useFetch(url, {
-    baseURL: config.public.apiBase,
-    ...options,
-    headers: {
-      Authorization: token.value ? `Bearer ${token.value}` : '',
-      Accept: 'application/json',
-      ...options.headers,
-    },
+  return $fetch.create({
+    baseURL: 'http://localhost:8000/api',
+    headers: token
+      ? {
+          Authorization: `Bearer ${token}`
+        }
+      : {}
   })
 }

@@ -1,0 +1,1 @@
+import{a4 as r,a0 as o,a5 as n}from"./C4gebpWI.js";const s=r(async()=>{let e,t;const a=localStorage.getItem("token");if(!a)return o("/admin/login");try{[e,t]=n(()=>$fetch("http://localhost:8000/api/user",{headers:{Authorization:`Bearer ${a}`,Accept:"application/json"}})),await e,t()}catch{return localStorage.removeItem("token"),o("/admin/login")}});export{s as default};

@@ -30,7 +30,7 @@ url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBf
           <div class="flex items-center gap-2">
             <div class="w-10 h-0.5 bg-red-600"></div>
             <span class="text-red-600 font-bold uppercase tracking-widest text-sm">
-              Established 1998
+              Year Established
             </span>
           </div>
           <h2 class="text-4xl font-bold">
@@ -49,12 +49,12 @@ url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBf
           </div>
           <div class="flex gap-6 pt-4">
             <div>
-              <span class="text-3xl font-bold text-red-600">25+</span>
+              <span class="text-3xl font-bold text-red-600">##</span>
               <p class="text-xs font-bold uppercase">Years of Experience</p>
             </div>
             <div class="w-px h-12 bg-gray-300"></div>
             <div>
-              <span class="text-3xl font-bold text-red-600">1.2k</span>
+              <span class="text-3xl font-bold text-red-600">##</span>
               <p class="text-xs font-bold uppercase">Completed Projects</p>
             </div>
           </div>

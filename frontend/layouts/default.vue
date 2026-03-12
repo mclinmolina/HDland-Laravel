@@ -26,10 +26,10 @@
     </main>
 
     <footer class="bg-black text-gray-300">
-  <div class="max-w-7xl mx-auto px-6 py-16">
+  <div class="max-w-7xl mx-auto px-2 py-16">
 
     <!-- Top Footer -->
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-10">
 
       <!-- Logo -->
       <div>
@@ -40,36 +40,36 @@
       <!-- Column 1 -->
       <div>
         <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">Weekly Themes</a></li>
-          <li><a href="#" class="hover:text-white">Pre-sale FAQs</a></li>
-          <li><a href="#" class="hover:text-white">Submit a Ticket</a></li>
+          <li>Showcase</li>
+          <li><a href="#" class="hover:text-white">projects</a></li>
         </ul>
       </div>
 
       <!-- Column 2 -->
       <div>
         <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">Services</a></li>
-          <li><a href="#" class="hover:text-white">Theme Tweak</a></li>
+          <li><a href="#" class="hover:text-white">Home</a></li>
         </ul>
       </div>
 
       <!-- Column 3 -->
       <div>
         <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">Showcase</a></li>
-          <li><a href="#" class="hover:text-white">Widgetkit</a></li>
-          <li><a href="#" class="hover:text-white">Support</a></li>
+          <li><a href="#" class="hover:text-white">About Us</a></li>
+        </ul>
+      </div> 
+
+      <!-- Column 4 -->
+      <div>
+        <ul class="space-y-2 text-sm uppercase tracking-wider">
+          <li><a href="#" class="hover:text-white">Services</a></li>
         </ul>
       </div>
 
       <!-- Column 4 -->
       <div>
         <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">About Us</a></li>
           <li><a href="#" class="hover:text-white">Contact Us</a></li>
-          <li><a href="#" class="hover:text-white">Affiliates</a></li>
-          <li><a href="#" class="hover:text-white">Resources</a></li>
         </ul>
       </div>
 

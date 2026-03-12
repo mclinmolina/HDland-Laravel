@@ -92,24 +92,24 @@
     </main>
 
     <footer class="bg-black text-gray-300">
-      <div class="max-w-7xl mx-auto px-2 py-8 sm:py-16">
+  <div class="max-w-7xl mx-auto px-2 py-8 sm:py-16">
 
-        <!-- Top Footer -->
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-10">
+    <!-- Top Footer -->
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-10">
 
-          <!-- Logo -->
-          <div>
-            <h2 class="text-white text-2xl font-bold tracking-widest">LOGO</h2>
-            <p class="text-sm text-gray-400 mt-2 tracking-wide">SLOGAN COMPANY</p>
-          </div>
+      <!-- Logo -->
+      <div>
+        <h2 class="text-white text-2xl font-bold tracking-widest">LOGO</h2>
+        <p class="text-sm text-gray-400 mt-2 tracking-wide">SLOGAN COMPANY</p>
+      </div>
 
-          <!-- Column 1 -->
-          <div>
-            <ul class="space-y-2 text-sm uppercase tracking-wider">
-              <li>Showcase</li>
-              <li><a href="#" class="hover:text-white">projects</a></li>
-                </ul>
-          </div>
+      <!-- Column 1 -->
+      <div>
+        <ul class="space-y-2 text-sm uppercase tracking-wider">
+          <li>Showcase</li>
+          <li><a href="#" class="hover:text-white">Projects</a></li>
+        </ul>
+      </div>
 
       <!-- Column 2 -->
       <div>
@@ -123,7 +123,7 @@
         <ul class="space-y-2 text-sm uppercase tracking-wider">
           <li><a href="#" class="hover:text-white">About Us</a></li>
         </ul>
-      </div> 
+      </div>
 
       <!-- Column 4 -->
       <div>
@@ -132,53 +132,63 @@
         </ul>
       </div>
 
-      <!-- Column 4 -->
+      <!-- Column 5 -->
       <div>
         <ul class="space-y-2 text-sm uppercase tracking-wider">
           <li><a href="#" class="hover:text-white">Contact Us</a></li>
         </ul>
       </div>
 
-        </div>
+    </div>
 
-        <!-- Divider -->
-        <div class="border-t border-gray-700 my-12"></div>
+    <!-- Divider -->
+    <div class="border-t border-gray-700 my-12"></div>
 
-        <!-- Social + Copyright -->
-        <div class="flex flex-col items-center space-y-6">
+    <!-- Social + Copyright -->
+    <div class="flex flex-col items-center space-y-6">
 
-          <!-- Social Icons -->
-          <div class="flex flex-wrap gap-3 justify-center">
+      <!-- Social Icons -->
+      <div class="flex flex-wrap gap-4 justify-center">
 
-            <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-              <span class="material-symbols-outlined text-[18px]">facebook</span>
-            </a>
+        <!-- Facebook -->
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.1v-2.9h2.1V9.8c0-2.1 1.2-3.3 3.2-3.3.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.3v1.6h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12"/>
+          </svg>
+        </a>
 
-            <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-              <span class="material-symbols-outlined text-[18px]">public</span>
-            </a>
+        <!-- Instagram -->
+        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 
+            0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 
+            5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.2 
+            1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 
+            9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+          </svg>
+        </a>
 
-            <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-              <span class="material-symbols-outlined text-[18px]">rss_feed</span>
-            </a>
+        <!-- Gmail -->
+        <a href="mailto:example@gmail.com" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-2 .9-2 
+            2v12c0 1.1.9 2 2 2h16c1.1 
+            0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 
+            4-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
 
-            <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-              <span class="material-symbols-outlined text-[18px]">mail</span>
-            </a>
-
-            <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-              <span class="material-symbols-outlined text-[18px]">more_horiz</span>
-            </a>
-
-          </div>
-
-          <!-- Copyright -->
-          <p class="text-sm text-gray-500">
-            ©Copyright. All rights reserved.
-          </p>
-        </div>
       </div>
-    </footer>
+
+      <!-- Copyright -->
+      <p class="text-sm text-gray-500">
+        © Copyright. All rights reserved.
+      </p>
+
+    </div>
+
+  </div>
+</footer>
   </div>
 </template>
 

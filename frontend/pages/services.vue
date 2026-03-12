@@ -181,7 +181,7 @@ const services = [
                 </li>
               </ul>
               <div class="mt-auto pt-8 flex items-baseline gap-2">
-                <span class="text-2xl font-black text-black">₱5,000</span>
+                <span class="text-2xl font-black text-black">₱ ####</span>
                 <span class="text-gray-500 text-sm">/ Day</span>
               </div>
             </div>
@@ -196,8 +196,8 @@ const services = [
               />
             </div>
             <div class="p-8 flex flex-col md:w-1/2">
-              <span class="text-primary font-bold text-xs uppercase">Professional Grade</span>
-              <h3 class="text-2xl font-bold mt-2 text-black">Digital Total Station</h3>
+              <span class="text-primary font-bold text-xs uppercase">Available now</span>
+              <h3 class="text-2xl font-bold mt-2 text-black">Total Station</h3>
               <p class="text-gray-600 mt-4 text-sm leading-relaxed">Integrated EDM for precise distance and angle measurements simultaneously.</p>
               <ul class="mt-6 space-y-2">
                 <li class="flex items-center text-sm text-gray-700">
@@ -211,7 +211,7 @@ const services = [
                 </li>
               </ul>
               <div class="mt-auto pt-8 flex items-baseline gap-2">
-                <span class="text-2xl font-black text-black">₱3,500</span>
+                <span class="text-2xl font-black text-black">₱ ####</span>
                 <span class="text-gray-500 text-sm">/ Day</span>
               </div>
             </div>

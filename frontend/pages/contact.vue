@@ -46,8 +46,8 @@ definePageMeta({
               <div>
                 <h3 class="font-bold text-lg mb-1 text-black">Office Address</h3>
                 <p class="text-gray-600 text-sm">
-                  Suite 405, Engineering Plaza,<br/>
-                  Central District, Business Hub 1234
+                  3rd Floor, LLL Building,<br/>
+                  Km. 4 Pico, La trinidad, Benguet, Philippines
                 </p>
               </div>
             </div>
@@ -60,8 +60,7 @@ definePageMeta({
               <div>
                 <h3 class="font-bold text-lg mb-1 text-black">Phone Number</h3>
                 <p class="text-gray-600 text-sm">
-                  +1 (555) 123-4567<br/>
-                  +1 (555) 987-6543
+                  +63 991 723 9224<br/>
                 </p>
               </div>
             </div>

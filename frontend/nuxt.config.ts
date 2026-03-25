@@ -2,9 +2,15 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxtjs/supabase'],
   supabase: {
-    url: process.env.NUXT_PUBLIC_SUPABASE_URL,
-    key: process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY,
-  },
+  url: process.env.NUXT_PUBLIC_SUPABASE_URL,
+  key: process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY,
+  redirect: false,
+  redirectOptions: {
+    login: '/login',
+    callback: '/confirm',
+    exclude: ['/*']   // ← this excludes ALL routes from redirect
+  }
+},
   css: ['~/assets/css/main.css'],
   app: {
     head: {

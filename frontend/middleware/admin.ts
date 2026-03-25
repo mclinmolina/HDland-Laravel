@@ -15,21 +15,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   // If no token, redirect to login
   if (!token) {
-    return navigateTo('/admin/login')
+    return navigateTo('/')
   }
 
-  // Verify token is valid
-  try {
-    await $fetch('http://localhost:8000/api/user', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json'
-      }
-    })
-  } catch (error) {
-    // Token invalid or expired, remove and redirect
-    localStorage.removeItem('token')
-    return navigateTo('/admin/login')
-  }
+  // Verify token is valid - DISABLED for Supabase testing
+  console.log('Admin middleware bypassed for Supabase test')
+  // Mock auth pass
+  // catch block commented
 })
 

@@ -21,49 +21,30 @@ export const useAdmin = () => {
    * Check if user is logged in as admin
    */
   const checkAuth = async () => {
+    // Mock auth for Supabase testing
     const storedToken = localStorage.getItem('token')
-    
-    if (!storedToken) {
-      isAuthenticated.value = false
-      return false
-    }
-
-    try {
-      const response = await $fetch<User>(`${API_URL}/user`, {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-          Accept: 'application/json'
-        }
-      })
-      
-      user.value = response
+    if (storedToken) {
       isAuthenticated.value = true
-      token.value = storedToken
+      user.value = { id: 1, username: 'test', is_admin: true }
       return true
-    } catch (error) {
-      localStorage.removeItem('token')
-      isAuthenticated.value = false
-      user.value = null
-      token.value = null
-      return false
     }
+    isAuthenticated.value = false
+    return false
   }
 
   /**
    * Login as admin
    */
   const login = async (username: string, password: string) => {
-    const response = await $fetch<{ token: string; user: User }>(`${API_URL}/login`, {
-      method: 'POST',
-      body: { username, password }
-    })
+    // Mock login for Supabase testing
+    const mockResponse = { token: 'mock-supabase-test-token-123', user: { id: 1, username, is_admin: true } }
 
-    localStorage.setItem('token', response.token)
-    token.value = response.token
-    user.value = response.user
+    localStorage.setItem('token', mockResponse.token)
+    token.value = mockResponse.token
+    user.value = mockResponse.user
     isAuthenticated.value = true
 
-    return response
+    return mockResponse
   }
 
   /**
@@ -96,7 +77,7 @@ export const useAdmin = () => {
    */
   const requireAuth = () => {
     if (!isAuthenticated.value) {
-      navigateTo('/admin/login')
+      navigateTo('/')
     }
   }
 

@@ -12,9 +12,13 @@ const newService = ref({
 })
 
 async function fetchServices() {
-  services.value = await $fetch('http://localhost:8000/api/services', {
-    credentials: 'include'
-  })
+  // Mock data for Supabase testing - disabled Laravel API
+  services.value = [
+    { id: 1, name: 'Topographic Survey', description: 'Test desc', survey_image: '/icons/topographic.png' },
+    { id: 2, name: 'Subdivision', description: 'Test desc', survey_image: '/icons/subdivision.png' },
+    { id: 3, name: 'Titling', description: 'Test desc', survey_image: '/icons/titling.png' }
+  ]
+  console.log('Mock services loaded for testing')
 }
 
 onMounted(fetchServices)
@@ -37,37 +41,12 @@ function closeModal() {
 async function addService() {
   loading.value = true
   try {
-    const token = localStorage.getItem('token')
-    console.log('Token:', token)
-    
-    if (!token) {
-      console.error('No token found, please login first')
-      alert('Please login first')
-      return
-    }
-    
-    const formData = new FormData()
-    formData.append('type', newService.value.type)
-    if (newService.value.name) formData.append('name', newService.value.name)
-    if (newService.value.survey_name) formData.append('survey_name', newService.value.survey_name)
-    if (newService.value.description) formData.append('description', newService.value.description)
-    if (newService.value.image) formData.append('image', newService.value.image)
-
-    const response = await $fetch('http://localhost:8000/api/services', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json'
-      }
-    })
-    
-    console.log('Success:', response)
+    // Mock add for Supabase testing - disabled Laravel API
+    console.log('Mock add service:', newService.value)
+    alert('Add disabled for testing - use Supabase ImageUpload')
     closeModal()
-    fetchServices()
   } catch (error) {
     console.error('Error adding service:', error)
-    alert('Error: ' + (error?.data?.message || error.message || 'Unknown error'))
   } finally {
     loading.value = false
   }
@@ -79,15 +58,9 @@ function editService(service) {
 
 async function deleteService(id) {
   try {
-    const token = localStorage.getItem('token')
-    await $fetch(`http://localhost:8000/api/services/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json'
-      },
-      credentials: 'include'
-    })
+    // Mock delete for Supabase testing
+    console.log('Mock delete service', id)
+    alert('Delete disabled for testing')
     fetchServices()
   } catch (error) {
     console.error('Error deleting service:', error)

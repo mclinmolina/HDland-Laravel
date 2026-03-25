@@ -1,4 +1,7 @@
 <script setup>
+import { useSupabaseClient } from '#imports'
+
+const supabase = useSupabaseClient()
 const projects = ref([])
 const showModal = ref(false)
 const loading = ref(false)
@@ -8,19 +11,25 @@ const newProject = ref({
   image: null
 })
 
+// ✅ Fetch projects from Supabase
 async function fetchProjects() {
-  projects.value = await $fetch('http://localhost:8000/api/projects', {
-    credentials: 'include'
-  })
+  const { data, error } = await supabase
+    .from('media')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching projects:', error.message)
+    return
+  }
+
+  projects.value = data
 }
 
 onMounted(fetchProjects)
 
 function openAddModal() {
-  newProject.value = {
-    name: '',
-    image: null
-  }
+  newProject.value = { name: '', image: null }
   showModal.value = true
 }
 
@@ -28,65 +37,66 @@ function closeModal() {
   showModal.value = false
 }
 
+function handleImageChange(event) {
+  const file = event.target.files[0]
+  if (file) newProject.value.image = file
+}
+
+// ✅ Upload image + save to Supabase
 async function addProject() {
+  if (!newProject.value.name || !newProject.value.image) return
+
   loading.value = true
   try {
-    const token = localStorage.getItem('token')
-    console.log('Token:', token)
-    
-    if (!token) {
-      console.error('No token found, please login first')
-      alert('Please login first')
-      return
-    }
-    
-    const formData = new FormData()
-    formData.append('name', newProject.value.name)
-    if (newProject.value.image) {
-      formData.append('image', newProject.value.image)
-    }
+    const file = newProject.value.image
+    const fileName = `${Date.now()}-${file.name}`
 
-    const response = await $fetch('http://localhost:8000/api/projects', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json'
-      }
-    })
-    
-    console.log('Success:', response)
+    // Upload image to Storage
+    const { error: uploadError } = await supabase.storage
+      .from('images')
+      .upload(fileName, file)
+
+    if (uploadError) throw uploadError
+
+    // Get public URL
+    const { data: { publicUrl } } = supabase.storage
+      .from('images')
+      .getPublicUrl(fileName)
+
+    // Save to media table
+    const { error: insertError } = await supabase
+      .from('media')
+      .insert({
+        title: newProject.value.name,
+        url: publicUrl
+      })
+
+    if (insertError) throw insertError
+
+    await fetchProjects()
     closeModal()
-    fetchProjects()
+
   } catch (error) {
-    console.error('Error adding project:', error)
-    alert('Error: ' + (error?.data?.message || error.message || 'Unknown error'))
+    console.error('Error adding project:', error.message)
+    alert('Error: ' + error.message)
   } finally {
     loading.value = false
   }
 }
 
-function handleImageChange(event) {
-  const file = event.target.files[0]
-  if (file) {
-    newProject.value.image = file
-  }
-}
-
-async function deleteProject(id) {
+// ✅ Delete from Supabase
+async function deleteProject(id, imageUrl) {
   try {
-    const token = localStorage.getItem('token')
-    await $fetch(`http://localhost:8000/api/projects/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json'
-      },
-      credentials: 'include'
-    })
-    fetchProjects()
+    // Extract filename from URL to delete from storage
+    const fileName = imageUrl.split('/').pop()
+
+    await supabase.storage.from('images').remove([fileName])
+    await supabase.from('media').delete().eq('id', id)
+
+    await fetchProjects()
   } catch (error) {
-    console.error('Error deleting project:', error)
+    console.error('Error deleting project:', error.message)
+    alert('Error: ' + error.message)
   }
 }
 </script>
@@ -118,16 +128,16 @@ async function deleteProject(id) {
           :key="project.id"
           class="border-b border-gray-700 hover:bg-gray-700"
         >
-          <td class="py-3 font-medium text-white">{{ project.name }}</td>
+          <td class="py-3 font-medium text-white">{{ project.title }}</td>
           <td class="py-3">
             <img
-              :src="project.image"
+              :src="project.url"
               class="h-16 w-28 object-cover rounded-lg"
             />
           </td>
           <td class="text-center">
             <button
-              @click="deleteProject(project.id)"
+              @click="deleteProject(project.id, project.url)"
               class="px-3 py-1 text-sm bg-red-500 text-white rounded-lg"
             >
               Delete
@@ -141,14 +151,13 @@ async function deleteProject(id) {
     <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-gray-800 rounded-2xl p-6 w-full max-w-md border border-gray-700">
         <h3 class="text-lg font-semibold mb-4 text-white">Add New Project</h3>
-        
-        <form @submit.prevent="addProject" class="space-y-4">
+
+        <div class="space-y-4">
           <div>
             <label class="block text-sm font-medium mb-1 text-white">Name *</label>
             <input
               v-model="newProject.name"
               type="text"
-              required
               class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
               placeholder="Project name"
             />
@@ -160,7 +169,6 @@ async function deleteProject(id) {
               type="file"
               @change="handleImageChange"
               accept="image/*"
-              required
               class="w-full px-3 py-2 border rounded-lg bg-gray-700 border-gray-600 text-white"
             />
           </div>
@@ -174,14 +182,14 @@ async function deleteProject(id) {
               Cancel
             </button>
             <button
-              type="submit"
+              @click="addProject"
               :disabled="loading"
               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50"
             >
               {{ loading ? 'Adding...' : 'Add Project' }}
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

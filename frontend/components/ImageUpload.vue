@@ -1,7 +1,7 @@
 <template>
   <div>
-    <UButton @click="triggerFileInput">
-      Upload Image
+    <UButton :loading="isUploading" @click="triggerFileInput" :disabled="isUploading">
+      {{ isUploading ? 'Uploading...' : 'Upload Image' }}
     </UButton>
 
     <input
@@ -24,7 +24,9 @@
 </template>
 
 <script setup lang="ts">
-const supabase = useSupabaseClient()
+
+import type { Database } from '~/types/supabase'
+const supabase = useSupabaseClient<Database>()
 
 const fileInput = ref<HTMLInputElement | null>(null)
 const uploadedUrl = ref<string | null>(null)
@@ -39,6 +41,16 @@ const handleUpload = async (event: Event) => {
   const target = event.target as HTMLInputElement
   const file = target.files?.[0]
   if (!file) return
+
+  // Validate file
+  if (!file.type.startsWith('image/')) {
+    errorMsg.value = 'Please select an image file only.'
+    return
+  }
+  if (file.size > 5 * 1024 * 1024) {
+    errorMsg.value = 'File size too large. Max 5MB.'
+    return
+  }
 
   isUploading.value = true
   errorMsg.value = null
@@ -60,14 +72,20 @@ const handleUpload = async (event: Event) => {
 
     uploadedUrl.value = data.publicUrl
 
+    // Reset input
+    fileInput.value!.value = ''
+
     // Save metadata to DB
-    await supabase.from('media').insert({
+    // @ts-ignore TS type mismatch - check Supabase table schema
+    const { error: dbError } = await supabase.from('media').insert([{
       title: file.name,
       url: data.publicUrl
-    })
+    }])
+    if (dbError) throw dbError
 
   } catch (err: any) {
-    errorMsg.value = err.message
+    console.error('Upload error:', err)
+    errorMsg.value = err.message || 'Upload failed. Check console for details.'
   } finally {
     isUploading.value = false
   }

@@ -91,13 +91,13 @@
             class="relative h-80 rounded-xl overflow-hidden group"
           >
             <img 
-              :alt="project.name" 
+              :alt="project.title" 
               class="w-full h-full object-cover" 
-              :src="project.image || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"
+              :src="project.url || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"
             />
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
               <p class="text-primary font-bold text-sm uppercase">Project</p>
-              <h4 class="text-black text-xl font-bold">{{ project.name }}</h4>
+              <h4 class="text-black text-xl font-bold">{{ project.title }}</h4>
             </div>
           </div>
         </div>
@@ -112,24 +112,23 @@ definePageMeta({
   layout: 'default'
 })
 
-const services = ref([])
+const supabase = useSupabaseClient()
 const projects = ref([])
 
 async function fetchData() {
   try {
-    // Fetch services
-    const servicesData = await $fetch('http://localhost:8000/api/services', {
-      credentials: 'include'
-    })
-    services.value = servicesData
+    // Fetch projects from Supabase
+    const { data, error } = await supabase
+      .from('media')
+      .select('*')
+      .order('created_at', { ascending: false })
 
-    // Fetch projects
-    const projectsData = await $fetch('http://localhost:8000/api/projects', {
-      credentials: 'include'
-    })
-    projects.value = projectsData
+    if (error) throw error
+
+    projects.value = data
+
   } catch (error) {
-    console.error('Error fetching data:', error)
+    console.error('Error fetching projects:', error.message)
   }
 }
 

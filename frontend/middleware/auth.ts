@@ -1,21 +1,9 @@
 export default defineNuxtRouteMiddleware(async () => {
-  if (import.meta.server) return
+  const supabase = useSupabaseClient()
 
-  const token = localStorage.getItem('token')
+  const { data: { session } } = await supabase.auth.getSession()
 
-  if (!token) {
-    return navigateTo('/admin/login')
-  }
-
-  try {
-    await $fetch('http://localhost:8000/api/user', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json'
-      }
-    })
-  } catch (error) {
-    localStorage.removeItem('token')
-    return navigateTo('/admin/login')
+  if (!session) {
+    return navigateTo('/login')
   }
 })

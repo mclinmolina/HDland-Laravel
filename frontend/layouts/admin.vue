@@ -4,7 +4,6 @@
     <header class="flex items-center justify-between px-6 py-4 bg-gray-800 shadow">
       <!-- Logo Left -->
       <div class="flex items-center gap-3">
-        <!-- <img src="/logo.png" class="h-8 w-auto" /> -->
         <span class="font-semibold text-lg text-white">HD Land Admin</span>
       </div>
 
@@ -16,6 +15,7 @@
         Logout
       </button>
     </header>
+
     <!-- Page Content -->
     <main class="p-6 text-white">
       <slot />
@@ -24,18 +24,16 @@
 </template>
 
 <script setup>
-const api = useApi()
+const supabase = useSupabaseClient()
 
 async function logout() {
-  try {
-    await api('/logout', {
-      method: 'POST'
-    })
-  } catch (e) {
-    console.log('Logout error (safe to ignore if token expired)')
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    console.error('Logout error:', error.message)
+    return
   }
 
-  localStorage.removeItem('token')
-  navigateTo('/admin/login')
+  navigateTo('/')
 }
 </script>

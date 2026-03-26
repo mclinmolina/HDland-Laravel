@@ -4,7 +4,7 @@
       <template #header>
         <div class="flex flex-col items-center gap-3">
           <div class="text-center">
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+            <h1 class="text-xl font-bold text-gray-900 dark:text-black uppercase tracking-wider">
               Admin Portal
             </h1>
             <p class="text-xs text-gray-500">Authorized Access Only</p>
@@ -20,6 +20,7 @@
             placeholder="admin@example.com" 
             icon="i-heroicons-envelope" 
             size="lg" 
+            autocomplete="off"
           />
         </UFormField>
 
@@ -30,6 +31,7 @@
             placeholder="••••••••" 
             icon="i-heroicons-lock-closed" 
             size="lg" 
+            autocomplete="off"
           />
         </UFormField>
 

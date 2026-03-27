@@ -2,6 +2,7 @@
   <div class="space-y-10">
     <ServicesTable />
     <ProjectsTable />
+    <AboutTable />
   </div>
 </template>
 

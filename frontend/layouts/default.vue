@@ -3,9 +3,13 @@
     <header class="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
+          <!--The logo image should match the height of the header so that i would look like a logo-->
           <div class="flex items-center gap-3">
-            <div class="bg-primary p-1.5 rounded-lg">
-              <span class="material-symbols-outlined text-white text-xl sm:text-2xl">architecture</span>
+            <div class="p-1.5 rounded-lg flex items-center justify-center">
+              <img 
+                src="/images/hero/HDLOGO.png"
+                class="h-20 w-20 object-contain"
+              />
             </div>
             <h1 class="text-base sm:text-xl font-bold tracking-tight uppercase text-black">
               HD Land Surveying <span class="text-primary">&</span> Realty
@@ -91,100 +95,84 @@
       <slot />
     </main>
 
-    <footer class="bg-black text-gray-300">
-  <div class="max-w-7xl mx-auto px-2 py-8 sm:py-16">
+   <footer class="bg-gray-950 text-gray-400">
+  <div class="max-w-7xl mx-auto px-6 py-16">
 
     <!-- Top Footer -->
-    <div class="grid grid-cols-1 md:grid-cols-6 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
 
-      <!-- Logo -->
-      <div>
-        <h2 class="text-white text-2xl font-bold tracking-widest">LOGO</h2>
-        <p class="text-sm text-gray-400 mt-2 tracking-wide">SLOGAN COMPANY</p>
+      <!-- Brand -->
+      <div class="md:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-primary p-1.5 rounded-lg">
+            <img
+              src="/images/hero/HDLOGO.png"
+              class="h-8 w-8 object-contain"
+            />
+          </div>
+          <h2 class="text-white text-lg font-bold tracking-tight uppercase">
+            HD Land Surveying <span class="text-primary">&</span> Realty
+          </h2>
+        </div>
+        <p class="text-sm text-gray-500 leading-relaxed max-w-sm">
+          Precision engineering meets strategic real estate solutions. Delivering geodetic accuracy and professional consultancy for your property needs.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex gap-3 pt-2">
+          <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-700 rounded-full hover:border-primary hover:text-primary transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.1v-2.9h2.1V9.8c0-2.1 1.2-3.3 3.2-3.3.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.3v1.6h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12"/>
+            </svg>
+          </a>
+          <a href="#" class="w-9 h-9 flex items-center justify-center border border-gray-700 rounded-full hover:border-primary hover:text-primary transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+          </a>
+          <a href="mailto:example@gmail.com" class="w-9 h-9 flex items-center justify-center border border-gray-700 rounded-full hover:border-primary hover:text-primary transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <!-- Column 1 -->
-      <div>
-        <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li>Showcase</li>
-          <li><a href="#" class="hover:text-white">Projects</a></li>
+      <!-- Quick Links -->
+      <div class="space-y-4">
+        <h3 class="text-white font-semibold uppercase tracking-widest text-xs">Quick Links</h3>
+        <ul class="space-y-3 text-sm">
+          <li><NuxtLink to="/" class="hover:text-white hover:translate-x-1 transition-all inline-block">Home</NuxtLink></li>
+          <li><NuxtLink to="/about" class="hover:text-white hover:translate-x-1 transition-all inline-block">About Us</NuxtLink></li>
+          <li><NuxtLink to="/services" class="hover:text-white hover:translate-x-1 transition-all inline-block">Services</NuxtLink></li>
+          <li><NuxtLink to="/contact" class="hover:text-white hover:translate-x-1 transition-all inline-block">Contact Us</NuxtLink></li>
         </ul>
       </div>
 
-      <!-- Column 2 -->
-      <div>
-        <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">Home</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3 -->
-      <div>
-        <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">About Us</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4 -->
-      <div>
-        <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">Services</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 5 -->
-      <div>
-        <ul class="space-y-2 text-sm uppercase tracking-wider">
-          <li><a href="#" class="hover:text-white">Contact Us</a></li>
+      <!-- Contact Info -->
+      <div class="space-y-4">
+        <h3 class="text-white font-semibold uppercase tracking-widest text-xs">Contact</h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-primary text-base mt-0.5">location_on</span>
+            <span>Baguio City, Philippines</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-base">call</span>
+            <span>+63 900 000 0000</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-base">mail</span>
+            <a href="mailto:example@gmail.com" class="hover:text-white transition">example@gmail.com</a>
+          </li>
         </ul>
       </div>
 
     </div>
 
-    <!-- Divider -->
-    <div class="border-t border-gray-700 my-12"></div>
-
-    <!-- Social + Copyright -->
-    <div class="flex flex-col items-center space-y-6">
-
-      <!-- Social Icons -->
-      <div class="flex flex-wrap gap-4 justify-center">
-
-        <!-- Facebook -->
-        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.1v-2.9h2.1V9.8c0-2.1 1.2-3.3 3.2-3.3.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.3v1.6h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12"/>
-          </svg>
-        </a>
-
-        <!-- Instagram -->
-        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 
-            0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 
-            5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.2 
-            1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 
-            9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-          </svg>
-        </a>
-
-        <!-- Gmail -->
-        <a href="mailto:example@gmail.com" class="w-10 h-10 flex items-center justify-center border border-gray-500 rounded-full hover:border-white hover:text-white transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-2 .9-2 
-            2v12c0 1.1.9 2 2 2h16c1.1 
-            0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 
-            4-8 5-8-5V6l8 5 8-5v2z"/>
-          </svg>
-        </a>
-
-      </div>
-
-      <!-- Copyright -->
-      <p class="text-sm text-gray-500">
-        © Copyright. All rights reserved.
-      </p>
-
+    <!-- Bottom Footer -->
+    <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
+      <p>© 2026 HD Land Surveying & Realty. All Rights Reserved.</p>
+      <p>Built with precision, delivered with integrity.</p>
     </div>
 
   </div>

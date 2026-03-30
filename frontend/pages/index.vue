@@ -1,3 +1,30 @@
+<script setup>
+definePageMeta({
+  layout: 'default'
+})
+
+const supabase = useSupabaseClient()
+const projects = ref([])
+
+async function fetchData() {
+  try {
+    const { data, error } = await supabase
+      .from('media')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(10)
+
+    if (error) throw error
+    projects.value = data
+
+  } catch (error) {
+    console.error('Error fetching projects:', error.message)
+  }
+}
+
+onMounted(fetchData)
+</script>
+
 <template>
   <div class="font-display">
     <!-- Hero Section -->
@@ -18,7 +45,6 @@
           Precision engineering meets strategic real estate solutions. Delivering geodetic accuracy and professional consultancy for your property needs.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <!-- Enhanced Primary Buttons with Highlight Effect -->
           <NuxtLink 
             to="/services"
             class="btn-highlight bg-primary-600 text-white px-10 py-4 rounded-lg font-bold text-lg shadow-xl shadow-primary-500/30 ring-2 ring-primary-500/20 hover:bg-primary-700 hover:ring-primary-400 hover:shadow-primary-500/50"
@@ -43,7 +69,6 @@
           <div class="w-20 h-1 bg-primary-600 mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <!-- Card 1 -->
           <div class="flex flex-col items-center text-center p-8 rounded-xl bg-gray-50 border border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-shadow">
             <div class="size-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
               <span class="material-symbols-outlined text-primary-600 text-4xl">my_location</span>
@@ -53,7 +78,6 @@
               We utilize state-of-the-art GNSS and total stations to ensure millimeter accuracy in every boundary and topographic survey.
             </p>
           </div>
-          <!-- Card 2 -->
           <div class="flex flex-col items-center text-center p-8 rounded-xl bg-gray-50 border border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-shadow">
             <div class="size-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
               <span class="material-symbols-outlined text-primary-600 text-4xl">workspace_premium</span>
@@ -63,7 +87,6 @@
               Our team consists of licensed Geodetic Engineers and experienced real estate brokers with decades of combined field experience.
             </p>
           </div>
-          <!-- Card 3 -->
           <div class="flex flex-col items-center text-center p-8 rounded-xl bg-gray-50 border border-gray-200 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-shadow">
             <div class="size-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
               <span class="material-symbols-outlined text-primary-600 text-4xl">verified_user</span>
@@ -78,62 +101,38 @@
     </section>
 
     <!-- Featured Projects Section -->
-    <section class="py-24 bg-white dark:bg-background-dark">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-black text-4xl font-bold mb-4">Featured Projects</h2>
-          <p class="text-black dark:text-gray-400 max-w-2xl mx-auto">A testament to our commitment to excellence across various scales and complexities.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div 
-            v-for="project in projects" 
-            :key="project.id" 
-            class="relative h-80 rounded-xl overflow-hidden group"
-          >
-            <img 
-              :alt="project.title" 
-              class="w-full h-full object-cover" 
-              :src="project.url || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"
-            />
-            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
-              <p class="text-primary font-bold text-sm uppercase">Project</p>
-              <h4 class="text-black text-xl font-bold">{{ project.title }}</h4>
-            </div>
+<!-- Featured Projects Section -->
+  <section class="py-24 bg-white dark:bg-background-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-black text-4xl font-bold mb-4">Featured Projects</h2>
+        <p class="text-black dark:text-gray-400 max-w-2xl mx-auto">A testament to our commitment to excellence across various scales and complexities.</p>
+      </div>
+
+      <!-- Project Grid: 5 columns, 2 rows -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div 
+          v-for="project in projects" 
+          :key="project.id" 
+          class="relative h-56 rounded-xl overflow-hidden group"
+        >
+          <img 
+            :alt="project.title" 
+            class="w-full h-full object-cover" 
+            :src="project.url || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"
+          />
+          <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+            <p class="text-primary font-bold text-xs uppercase">Project</p>
+            <h4 class="text-white text-sm font-bold">{{ project.title }}</h4>
           </div>
         </div>
       </div>
-    </section>
+
+    </div>
+  </section>
 
   </div>
 </template>
-
-<script setup>
-definePageMeta({
-  layout: 'default'
-})
-
-const supabase = useSupabaseClient()
-const projects = ref([])
-
-async function fetchData() {
-  try {
-    // Fetch projects from Supabase
-    const { data, error } = await supabase
-      .from('media')
-      .select('*')
-      .order('created_at', { ascending: false })
-
-    if (error) throw error
-
-    projects.value = data
-
-  } catch (error) {
-    console.error('Error fetching projects:', error.message)
-  }
-}
-
-onMounted(fetchData)
-</script>
 
 <style scoped>
 .scrollbar-hide::-webkit-scrollbar {

@@ -3,6 +3,31 @@ definePageMeta({
   layout: 'default'
 })
 
+const supabase = useSupabaseClient()
+
+const about = ref({
+  about_text: '',
+  years_of_experience: 0,
+  team_image_url: '',
+  mission: '',
+  vision: ''
+})
+
+async function fetchAbout() {
+  const { data, error } = await supabase
+    .from('about')
+    .select('*')
+    .single()
+
+  if (error) {
+    console.error('Error fetching about:', error.message)
+    return
+  }
+
+  about.value = data
+}
+
+onMounted(fetchAbout)
 </script>
 
 <template>
@@ -22,10 +47,14 @@ url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBf
     <!-- OUR STORY -->
     <section class="w-full max-w-360 px-4 md:px-40 py-16">
       <div class="grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Team Image from Supabase -->
         <img
           class="rounded-xl shadow-2xl object-cover w-full md:h-125"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzoggOGcCl0wTdn3EfJ46KN_lfU8EwiNgtex3x6mHCDe4ALNvKJUYCvM7BMJx3NBNOqHa0aLBCHcf8rBafClX6Vgjs0Hw-P0cq2ubnJeMVlVkvIEew8iJ7LQDffrtBiG835DoRtU_4MB0WY0v5ZMde_2LUUHAP8TVwzWy1RhLLoCWpNs1Gv9t4S1UDwxq_yn9UXVXCC0eMMu7Q8PcBHJdl2Cy-hFVBLPK_ZmVSRpiWJ2IPZYeuosENswnJLYmwRyFEecxRPA3cZ4-f"
+          :src="about.team_image_url || 'https://lh3.googleusercontent.com/aida-public/AB6AXuAzoggOGcCl0wTdn3EfJ46KN_lfU8EwiNgtex3x6mHCDe4ALNvKJUYCvM7BMJx3NBNOqHa0aLBCHcf8rBafClX6Vgjs0Hw-P0cq2ubnJeMVlVkvIEew8iJ7LQDffrtBiG835DoRtU_4MB0WY0v5ZMde_2LUUHAP8TVwzWy1RhLLoCWpNs1Gv9t4S1UDwxq_yn9UXVXCC0eMMu7Q8PcBHJdl2Cy-hFVBLPK_ZmVSRpiWJ2IPZYeuosENswnJLYmwRyFEecxRPA3cZ4-f'"
+          :alt="'Team photo'"
         />
+
         <div class="flex flex-col gap-6">
           <div class="flex items-center gap-2">
             <div class="w-10 h-0.5 bg-red-600"></div>
@@ -36,26 +65,24 @@ url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBf
           <h2 class="text-4xl font-bold">
             WHO ARE WE?
           </h2>
+
+          <!-- About Text from Supabase -->
           <div class="space-y-4 text-black/80 leading-relaxed">
-            <p>
-              At HD Land Surveying and Realty, we bridge the gap between technical precision and real estate excellence. Founded on the principles of accuracy and integrity, our firm has grown from a local surveying practice into a comprehensive multi-disciplinary service provider.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
+            <p v-if="about.about_text">{{ about.about_text }}</p>
+            <template v-else>
+              <p>At HD Land Surveying and Realty, we bridge the gap between technical precision and real estate excellence. Founded on the principles of accuracy and integrity, our firm has grown from a local surveying practice into a comprehensive multi-disciplinary service provider.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </template>
           </div>
+
+          <!-- Years of Experience from Supabase -->
           <div class="flex gap-6 pt-4">
             <div>
-              <span class="text-3xl font-bold text-red-600">25+</span>
+              <span class="text-3xl font-bold text-red-600">
+                {{ about.years_of_experience ? `${about.years_of_experience}+` : '25+' }}
+              </span>
               <p class="text-xs font-bold uppercase">Years of Experience</p>
-            </div>
-            <div class="w-px h-12 bg-gray-300"></div>
-            <div>
-              <span class="text-3xl font-bold text-red-600">1.2k</span>
-              <p class="text-xs font-bold uppercase">Completed Projects</p>
             </div>
           </div>
         </div>
@@ -70,27 +97,29 @@ url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBf
           <div class="w-16 h-1 bg-red-600 mx-auto mt-2"></div>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
-          <!-- Mission -->
+
+          <!-- Mission from Supabase -->
           <div class="border-l-8 border-red-600 bg-gray-50 p-10 rounded-xl shadow-sm space-y-6">
             <div class="flex items-center gap-4">
               <span class="material-symbols-outlined text-red-600 text-4xl">target</span>
               <h3 class="text-2xl font-bold">Our Mission</h3>
             </div>
             <p class="italic text-black/80 text-lg">
-              "To provide precise, reliable, and ethical surveying services that support land development, infrastructure planning, and sustainable resource management. We are committed to delivering accurate data using modern technology and professional expertise."
+              "{{ about.mission || 'To provide precise, reliable, and ethical surveying services that support land development, infrastructure planning, and sustainable resource management.' }}"
             </p>
           </div>
 
-          <!-- Vision -->
+          <!-- Vision from Supabase -->
           <div class="border-l-8 border-red-600 bg-gray-50 p-10 rounded-xl shadow-sm space-y-6">
             <div class="flex items-center gap-4">
               <span class="material-symbols-outlined text-red-600 text-4xl">visibility</span>
               <h3 class="text-2xl font-bold">Our Vision</h3>
             </div>
             <p class="italic text-black/80 text-lg">
-              "To be recognized as trusted and competent surveyors who contribute to community development and responsible land stewardship through excellence and innovation."
+              "{{ about.vision || 'To be recognized as trusted and competent surveyors who contribute to community development and responsible land stewardship through excellence and innovation.' }}"
             </p>
           </div>
+
         </div>
       </div>
     </section>
@@ -109,30 +138,23 @@ url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVEktKbt_viP1gZXdbCgoBf
             <span class="material-symbols-outlined text-red-600 text-4xl">architecture</span>
           </div>
           <h4 class="text-xl font-bold">Accuracy</h4>
-          <p class="text-sm text-black/70">
-            We ensure precision and reliability in every measurement and report.
-          </p>
+          <p class="text-sm text-black/70">We ensure precision and reliability in every measurement and report.</p>
         </div>
         <div class="text-center space-y-4">
           <div class="w-20 h-20 rounded-full shadow-lg flex items-center justify-center mx-auto border hover:border-red-600 transition">
             <span class="material-symbols-outlined text-red-600 text-4xl">verified_user</span>
           </div>
           <h4 class="text-xl font-bold">Integrity</h4>
-          <p class="text-sm text-black/70">
-            We uphold honesty and ethical standards in all surveying practices.
-          </p>
+          <p class="text-sm text-black/70">We uphold honesty and ethical standards in all surveying practices.</p>
         </div>
         <div class="text-center space-y-4">
           <div class="w-20 h-20 rounded-full shadow-lg flex items-center justify-center mx-auto border hover:border-red-600 transition">
             <span class="material-symbols-outlined text-red-600 text-4xl">lightbulb</span>
           </div>
           <h4 class="text-xl font-bold">Innovation</h4>
-          <p class="text-sm text-black/70">
-            The world of surveying and realty is evolving. We embrace new methodologies to deliver faster, smarter, and more efficient results.
-          </p>
+          <p class="text-sm text-black/70">The world of surveying and realty is evolving. We embrace new methodologies to deliver faster, smarter, and more efficient results.</p>
         </div>
       </div>
     </section>
   </main>
 </template>
-
